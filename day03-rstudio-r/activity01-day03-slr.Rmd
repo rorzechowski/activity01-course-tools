@@ -138,34 +138,65 @@ Specifically, we are going to use the political pressures and controls on media 
 Answer the following questions (use your markdown skills) and complete the following tasks.
 
 2. What type of plot would you use to display the distribution of the personal freedom scores, `pf_score`? 
-  Would this be the same type of plot to display the distribution of the political pressures and controls on media content index, `pf_expression_control`?
 
+**ANSWER: I would use a boxplot to display the `pf_score` data.**
 
+Would this be the same type of plot to display the distribution of the political pressures and controls on media content index, `pf_expression_control`?
+
+**ANSWER: Yes, I would likely use the same plot for these data as well.**
 
 - In the R code chunk below titled `univariable-plots`, type the R code that displays this plot for `pf_score`.
 - In the R code chunk below titled `univariable-plots`, type the R code that displays this plot for `pf_expression_control`.
 
-```{r distribution-plots}
+```{r univariable-plots}
+#pf_score distribution
+ggplot(data = hifi_2016, aes(x = factor(year), 
+                                   y = pf_score)) + 
+  geom_boxplot()
 
+ggplot(data = hifi_2016, aes(x = pf_score)) + 
+  geom_histogram(binwidth = 0.2) +
+    geom_vline(aes(xintercept=mean(pf_score, na.rm=T)),   
+               color="red", linetype="dashed", size=1)
+
+summary(hifi_2016$pf_score)
+```
+
+```{r univariable-plots2}
+#pf_expression_control distribution
+ggplot(data = hifi_2016, aes(x = factor(year), 
+                                   y = pf_expression_control)) + 
+  geom_boxplot()
+
+ggplot(data = hifi_2016, aes(x = pf_expression_control)) + 
+  geom_histogram(binwidth = 0.4) +
+    geom_vline(aes(xintercept=mean(pf_expression_control, na.rm=T)),   
+               color="red", linetype="dashed", size=1)
+
+summary(hifi_2016$pf_expression_control)
 ```
 
 4. Comment on each of these two distributions. 
   Be sure to describe their centers, spread, shape, and any potential outliers.
 
-
+**ANSWER: The `pf_score` data set has a median value of 6.9, a max of 9.4, and a min of 2.2. Based on the boxplot and histogram, we see that there are two potential outliers. As a whole, the distribution seems fairly even, if we remove the few outliers. The `pf_expression_control` data appears to be unimodally distributed with no outliers. This is corroborated by both the boxplot and the histogram.**
 
 3. What type of plot would you use to display the relationship between the personal freedom score, `pf_score`, and the political pressures and controls on media content index,`pf_expression_control`?
 
-
+**ANSWER: I would use a scatterplot to compare the relationship between the two variables.**
 
 - In the R code chunk below titled `relationship-plot`, plot this relationship using the variable `pf_expression_control` as the predictor/explanatory variable.
 
 ```{r relationship-plot}
-
+ggplot(data = hifi_2016, aes(x = pf_expression_control,
+                             y = pf_score)) +
+  geom_point()
 ```
 
 4. Does the relationship look linear?
   If you knew a country's `pf_expression_control`, or its score out of 10, with 0 being the most, of political pressures and controls on media content, would you be comfortable using a linear model to predict the personal freedom score?
+
+**ANSWER: Based on the scatterplot of this relationship, I would say that I do feel comfortable using a linear model to predict a personal freedom score. The relationship appears to have a strong, positive relationship and I suspect that a model would corroborate this.**
 
 #### Challenge
 
