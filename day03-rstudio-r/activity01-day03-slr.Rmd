@@ -20,7 +20,17 @@ This is a suggestion that I strongly recommend that you follow.
 We will see how naming code chunks makes our life easier later in this document so be sure to stick around.
 
 ```{r simple-calculations}
+#adding two and five
+2 + 5
 
+#create variable vector
+int_vect <- c(1:9)
+
+#create letter vector
+char_vect <- LETTERS[1:17]
+
+#count number of letters after 'D'
+length(char_vect[5:17])
 ```
 
 In the code chunk named "simple-calculations", add the R code that does the following:
