@@ -209,7 +209,7 @@ What numerical summary would you use to describe the relationship between two nu
 (hint: explore the `cor` function from Base R)
 
 ```{r challenge}
-
+cat("The variance and standard deviation of the pf_score for the data are", var(hifi_2016$pf_score),"and", sd(hifi_2016$pf_score), "respectively")
 ```
 
 
